@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacherpreneur AI</title>
+  <meta name="description" content="Teacherpreneur AI is a community for educators building smarter business systems with AI." />
+  <style>
+    :root {
+      --primary: #0e58a8;
+      --primary-dark: #0a4687;
+      --primary-light: #eaf3ff;
+      --text: #111111;
+      --muted: #5a5a5a;
+      --border: #e7e7e7;
+      --bg: #ffffff;
+      --card-bg: #ffffff;
+      --shadow: 0 10px 30px rgba(17, 17, 17, 0.07);
+      --radius: 18px;
+      --radius-sm: 14px;
+      --max-width: 1180px;
+      --nav-height: 76px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4, p { margin: 0; }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 84px 0;
+      scroll-margin-top: 92px;
+    }
+
+    .section-tight {
+      padding: 52px 0;
+      scroll-margin-top: 92px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 3vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .muted { color: var(--muted); }
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(14, 88, 168, 0.24);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: #d4d4d4;
+      transform: translateY(-1px);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+    }
+
+    .site-header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      color: var(--primary);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav a:hover { color: var(--text); }
+
+    .hero {
+      padding: 92px 0 72px;
+      background: linear-gradient(to bottom, #ffffff 0%, #ffffff 70%, #f9fbff 100%);
+    }
+
+    .hero-card {
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: clamp(28px, 4vw, 56px);
+      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    }
+
+    .hero-copy p + p { margin-top: 14px; }
+
+    .section-header {
+      max-width: 820px;
+      margin-bottom: 30px;
+    }
+
+    .center-block {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card p { color: var(--muted); }
+
+    .contrast-banner {
+      background: var(--primary-light);
+      border: 1px solid #d5e6ff;
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    .philosophy {
+      text-align: center;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: #ffffff;
+      box-shadow: var(--shadow);
+    }
+
+    .philosophy p {
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .founder-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .founder-card img {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      object-fit: cover;
+      background: #f4f4f4;
+    }
+
+    .founder-content {
+      padding: 22px;
+      text-align: left;
+    }
+
+    .role {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .business {
+      margin-top: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .list-card ul {
+      margin: 18px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .list-card li + li { margin-top: 10px; }
+
+    .faq-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: #ffffff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 22px;
+      font-weight: 700;
+      position: relative;
+      padding-right: 52px;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.3rem;
+      line-height: 1;
+      color: var(--primary);
+    }
+
+    .faq-item[open] summary::after { content: "−"; }
+
+    .faq-answer {
+      padding: 0 22px 22px;
+      color: var(--muted);
+    }
+
+    .cta-center {
+      display: flex;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .waitlist-card {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: clamp(24px, 4vw, 42px);
+      box-shadow: var(--shadow);
+      background: #ffffff;
+    }
+
+    .waitlist-card p {
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 22px;
+    }
+
+    .kit-form-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 34px 0 46px;
+    }
+
+    .site-footer p + p { margin-top: 6px; }
+    .footer-brand { font-weight: 800; }
+
+    @media (max-width: 920px) {
+      .grid-3,
+      .founder-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-header {
+        height: auto;
+      }
+
+      .site-header-inner {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        gap: 14px 18px;
+      }
+
+      .section,
+      .section-tight {
+        scroll-margin-top: 120px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--max-width), calc(100% - 20px));
+      }
+
+      .hero {
+        padding: 50px 0 38px;
+      }
+
+      .hero-card,
+      .card,
+      .founder-content,
+      .contrast-banner,
+      .waitlist-card {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .btn-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a class="brand" href="#top">Teacherpreneur AI</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#inside">Inside</a>
+        <a href="#founders">Founders</a>
+        <a href="#faq">FAQ</a>
+        <a href="#waitlist">Join Waitlist</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-copy text-center">
+            <span class="eyebrow">Teacherpreneur AI</span>
+            <h1>What if AI could give you back 20 hours a week?</h1>
+            <p class="lead center-block">
+              What if you could automate your emails for the next year, cut product creation time in half, build better systems for your business, or create tools that save you hours every month?
+            </p>
+            <p class="lead center-block">
+              Inside Teacherpreneur AI, we do not think those questions are too big. We build them together.
+            </p>
+            <div class="btn-row" style="justify-content: center;">
+              <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
+              <a href="#founders" class="btn btn-secondary">Meet the Founders</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header text-center center-block">
+          <span class="eyebrow">About</span>
+          <h2>Using AI is easy. Building systems with it is different.</h2>
+          <p class="lead center-block">
+            Right now, it is easy to open ChatGPT, ask a question, and act on the answer. But is that actually saving you time?
+          </p>
+        </div>
+        <div class="card text-center">
+          <p>
+            Anyone can use AI for quick ideas, proofreading, or one-off tasks. Inside this community, we push past quick wins and focus on systems that remove repeated work from your business.
+          </p>
+          <p style="margin-top: 14px;">
+            The goal is not to use AI more. The goal is to make your business run better with less manual effort.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="inside">
+      <div class="container">
+        <div class="section-header text-center center-block">
+          <span class="eyebrow">Inside the Community</span>
+          <h2>What we’re actively building right now</h2>
+          <p class="lead center-block">
+            This is not passive content. It is active implementation inside real education businesses.
+          </p>
+        </div>
+        <div class="grid-3">
+          <article class="card text-center">
+            <h3>Mike</h3>
+            <p>
+              Building automations, deployment workflows, and security systems that give educators back real working hours each week.
+            </p>
+          </article>
+          <article class="card text-center">
+            <h3>Katie</h3>
+            <p>
+              Turning AI into smarter product systems, faster creation workflows, and stronger offers for educators building real businesses.
+            </p>
+          </article>
+          <article class="card text-center">
+            <h3>Rachel</h3>
+            <p>
+              Comparing tools, testing workflows, and building membership systems that turn AI experiments into repeatable business wins.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight" id="contrast">
+      <div class="container">
+        <div class="contrast-banner">
+          <span class="eyebrow">A Different Focus</span>
+          <div class="text-center">
+            <h2>We’re interested in more than quick one-off tasks.</h2>
+            <p class="lead center-block" style="max-width: 900px;">
+              Some educators are still using AI for quick one-off tasks. We’re more interested in what happens when AI starts handling entire workflows.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight" id="philosophy">
+      <div class="container">
+        <div class="philosophy">
+          <p>We’re not here to collect prompts. We’re here to build systems that buy back time.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="founders">
+      <div class="container">
+        <div class="section-header text-center center-block">
+          <div class="text-left"><span class="eyebrow">Founders</span></div>
+          <h2>Meet the Founders</h2>
+          <p class="lead center-block">
+            Three different strengths. One shared goal: helping educators build smarter businesses with AI.
+          </p>
+        </div>
+        <div class="founder-grid">
+          <article class="founder-card">
+            <img src="Mike.png" alt="Mike, Teacherpreneur AI co-founder" />
+            <div class="founder-content">
+              <h3>Mike</h3>
+              <div class="role">Tech + Security</div>
+              <p>Builds automations, deployment workflows, and security systems that give educators back real working hours each week.</p>
+              <p class="business">SEOTpreneur</p>
+            </div>
+          </article>
+
+          <article class="founder-card">
+            <img src="Katie.png" alt="Katie, Teacherpreneur AI co-founder" />
+            <div class="founder-content">
+              <h3>Katie</h3>
+              <div class="role">AI + Product Systems</div>
+              <p>Turns AI into smarter product systems, faster creation workflows, and stronger copy that helps educators build better offers in less time.</p>
+              <p class="business">Teacherpreneur Email and More</p>
+            </div>
+          </article>
+
+          <article class="founder-card">
+            <img src="Rachel.png" alt="Rachel, Teacherpreneur AI co-founder" />
+            <div class="founder-content">
+              <h3>Rachel</h3>
+              <div class="role">Community + Growth</div>
+              <p>Designs membership systems, feedback loops, and growth workflows that turn AI experiments into repeatable business wins.</p>
+              <p class="business">Connect Kids Tutoring</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="different">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">What Makes This Different</span>
+          <div class="text-center">
+            <h2>This is not a prompt library.</h2>
+            <p class="lead center-block">
+              Anyone can ask AI for ideas or basic edits. What we care about is setting up AI to handle the things you do not want to do, do not have time to do, or keep doing over and over.
+            </p>
+          </div>
+        </div>
+        <div class="card list-card text-left">
+          <ul>
+            <li>Workflow systems that reduce repeated work</li>
+            <li>Business automations that buy back time</li>
+            <li>Faster creation processes with stronger outputs</li>
+            <li>Email, content, and operational systems that actually get used</li>
+            <li>Better implementation, not just more information</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="text-center">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Do I need ChatGPT or Claude? Does it matter?</summary>
+            <div class="faq-answer">
+              We believe everyone should have a paid plan for the AI tool they use most. We’ve tested this over and over, and the jump in quality is significant once you move from free to paid. The specific tool matters less than having a paid version you’ll consistently use well.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do I need to pay for other tools?</summary>
+            <div class="faq-answer">
+              Not necessarily. You can get a lot of value with just your paid AI tool. If you start building automations, you may eventually choose tools like Make or Zapier, but that part is optional.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is this for TPT creators only?</summary>
+            <div class="faq-answer">
+              No. This is for educators building any kind of education business. You do not need to have a TPT store.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Why join a community instead of learning alone?</summary>
+            <div class="faq-answer">
+              Because I tried that. There’s a difference between watching and implementing. Inside this community, we’re building real systems inside real businesses and opening that process up to others.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What exactly do I get?</summary>
+            <div class="faq-answer">
+              You’ll work through real business challenges, get founder feedback, join a monthly live call, and see the biggest community breakthroughs each month.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What level is this for?</summary>
+            <div class="faq-answer">
+              Best fit: educators who already have a paid AI plan and want to go beyond casual prompting into workflows, systems, and better business outcomes.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Will you give us prompts?</summary>
+            <div class="faq-answer">
+              Sometimes. But this community is about systems, workflows, implementation, and outcomes, not collecting prompts for the sake of it.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Are there courses to follow?</summary>
+            <div class="faq-answer">
+              We plan to build focused mini-courses around the most useful and most-requested community breakthroughs.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Who is behind this community?</summary>
+            <div class="faq-answer">
+              Mike focuses on tech and security. Katie focuses on AI and product systems. Rachel focuses on community and growth. Together, we each bring different strengths from real education businesses already using AI every week.
+            </div>
+          </details>
+        </div>
+
+        <div class="cta-center">
+          <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="waitlist">
+      <div class="container">
+        <div class="waitlist-card text-center">
+          <span class="eyebrow">Join the Waitlist</span>
+          <h2>Be first to hear when doors open</h2>
+          <p class="center-block">
+            Join the waitlist to hear when new spots open, the next challenge cycle begins, and early access becomes available.
+          </p>
+          <div class="kit-form-wrap">
+            <script async data-uid="279f1b843b" src="https://teacherpreneurai.kit.com/279f1b843b/index.js"></script>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-brand">Teacherpreneur AI</p>
+      <p class="muted">Built by educators using AI in real businesses.</p>
+      <p class="muted">© 2026 All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
